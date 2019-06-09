@@ -11,6 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
@@ -99,6 +100,126 @@ public class GgdrSteps {
         element.click();
 
     }
+
+    @Given("^click on sepete ekle$")
+
+    public void clickSepeteEkle() throws Throwable {
+
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(
+                driver.findElement(By.id("add-to-basket"))
+                )
+        );
+        element.click();
+
+    }
+    @Given("^click on alışverişi tamamla$")
+
+    public void clickTamamla() throws Throwable {
+
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(
+                driver.findElement(By.cssSelector("div > div > div > div:nth-child(5) > input"))
+                )
+        );
+        element.click();
+
+    }
+    @Given("^kullanıcı adına '(.*)' yaz$")
+    public void writeName(String name) throws Throwable {
+
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(
+                driver.findElement(By.id("FormLoginEmail"))
+                )
+        );
+        element.sendKeys(name);
+
+    }
+    @Then("^şifreye '(.*)' yaz$")
+    public void writePassword(String pass) throws Throwable {
+
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(
+                driver.findElement(By.id("FormLoginPassword"))
+                )
+        );
+        element.sendKeys(pass);
+
+    }
+    @Then("^Devam et tıkla$")
+    public void clickDevam() throws Throwable {
+
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(
+                driver.findElement(By.id("loginForm"))
+                )
+        );
+        element.click();
+
+    }
+    @Given("^Name '(.*)' yaz$")
+    public void writeAddName(String n) throws Throwable {
+
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(
+                driver.findElement(By.name("Name"))
+                )
+        );
+        element.sendKeys(n);
+
+    }
+
+    @Then("^SurName '(.*)' yaz$")
+    public void writeAddSurName(String n) throws Throwable {
+
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(
+                driver.findElement(By.name("SurName"))
+                )
+        );
+        element.sendKeys(n);
+
+    }
+    @Then("^Address '(.*)' yaz$")
+    public void writeAdd(String n) throws Throwable {
+
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(
+                driver.findElement(By.name("Address"))
+                )
+        );
+        element.sendKeys(n);
+
+    }
+    @Then("^il '(.*)' seç")
+    public void selectSehir(int n) throws Throwable {
+
+        Select fruits = new Select(driver.findElement(By.id("CitySelect")));
+        fruits.selectByIndex(n);
+
+    }
+
+    @Then("^Telefon '(.*)' yaz")
+    public void writePhone(String n) throws Throwable {
+
+        driver.findElement(By.name("phone-number")).sendKeys(n);
+
+    }
+    @Then("^ilçe '(.*)' seç")
+    public void selectIlce(int index) throws Throwable {
+
+        Select fruits = new Select(driver.findElement(By.id("District")));
+        fruits.selectByIndex(index);
+
+    }
+    @Then("^kaydet tıkla")
+    public void clickKaydet() throws Throwable {
+
+        driver.findElement(By.xpath("//*[@id=\"AdrEditPopup\"]/div/div/div[2]/div[6]/div[1]/input")).click();
+
+    }
+
 
 
     public void hoverEl(WebDriver driver, WebElement el) {
